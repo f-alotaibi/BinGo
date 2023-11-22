@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pastebin-go</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="m-auto p-10 lg:w-1/2 md:w-full">
+        <div class="grid justify-center text-center">
+            <h1 class="text-xl">Pastebin-go</h1>
+            <h2 class="text-xl">Another pastebin frontend, written in go</h2>
+        </div>
+        <div class="flex justify-end">
+            <div>
+                <a href="/raw/{{ .id }}">Raw</a>
+                <a class="ml-2" href="/dl/{{ .id }}">Download</a>
+            </div>
+        </div>
+        <div class="py-4">
+            <pre class="border-2"><code>{{ .content }}</code></pre>
+        </div>
+    </div>
+</body>
+</html>
