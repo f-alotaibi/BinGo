@@ -19,11 +19,14 @@ func loadRoutes() *echo.Echo {
 	e.GET("/", func(c echo.Context) error {
 		return c.Render(http.StatusOK, "index.html", nil)
 	})
-	e.GET("/id/:id", api.GetPasteID)
-	e.GET("/idnew/:id", api.GetPasteNewID)
-	e.GET("/raw/:id", api.GetPasteRaw)
-	e.GET("/dl/:id", api.GetDownloadPaste)
-
+	var pastebin api.Paste = api.Pastebin{}
+	var githubgists api.Paste = api.GithubGists{}
+	var gitlabsnippets api.Paste = api.GitlabSnippets{}
+	var rentry api.Paste = api.Rentry{}
+	pastebin.Init(e.Group("/pastebin"))
+	githubgists.Init(e.Group("/github"))
+	gitlabsnippets.Init(e.Group("/gitlab"))
+	rentry.Init(e.Group("/rentry"))
 	e.Renderer = echoview.Default()
 	return e
 }

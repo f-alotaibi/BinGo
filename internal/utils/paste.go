@@ -6,10 +6,8 @@ import (
 	"net/http"
 )
 
-var ENDPOINT = "https://pastebin.com/raw/%s"
-
-func GetPasteContent(id string) (string, error) {
-	res, err := http.Get(fmt.Sprintf(ENDPOINT, id))
+func GetRawPasteContent(endpoint string) (string, error) {
+	res, err := http.Get(endpoint)
 	if err != nil || res.StatusCode != 200 {
 		return "", fmt.Errorf("Could not get paste content")
 	}
