@@ -1,7 +1,7 @@
 package main
 
 import (
-	"pastebin-go/internal/app"
+	"bingo/internal/app"
 )
 
 func main() {

@@ -1,4 +1,4 @@
-module pastebin-go
+module bingo
 
 go 1.21.3
 

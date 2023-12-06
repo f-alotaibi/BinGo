@@ -1,8 +1,8 @@
 package app
 
 import (
+	"bingo/internal/api"
 	"net/http"
-	"pastebin-go/internal/api"
 
 	"github.com/foolin/goview/supports/echoview-v4"
 	"github.com/labstack/echo/v4"

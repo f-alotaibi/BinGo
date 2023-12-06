@@ -1,9 +1,9 @@
 package api
 
 import (
+	"bingo/internal/utils"
 	"fmt"
 	"net/http"
-	"pastebin-go/internal/utils"
 	"strings"
 
 	"github.com/labstack/echo/v4"
