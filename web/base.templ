@@ -1,0 +1,23 @@
+package web
+
+templ Base() {
+	<!DOCTYPE html>
+	<html>
+	    <head>
+			<meta charset="utf-8"/>
+    	    <title>Bingo</title>
+        	<script src="https://cdn.tailwindcss.com"></script>
+	    </head>
+    	<body>
+			<main>
+			    <div class="m-auto p-10 lg:w-2/3 md:w-full">
+            		<div class="grid justify-center text-center">
+                		<h1 class="text-xl">Bingo</h1>
+                		<h2 class="text-xl">One frontend to rule them all!</h2>
+		            </div>
+					{ children... }
+				</div>
+			</main>
+	    </body>
+	</html>
+}
