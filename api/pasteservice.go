@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/julienschmidt/httprouter"
@@ -17,7 +18,7 @@ type PasteService struct {
 }
 
 func (paste PasteService) Init(router *httprouter.Router) {
-	router.GET(fmt.Sprintf("/%s/:id", paste.ServiceName), paste.pasteServiceHandler)
+	router.GET(fmt.Sprintf("/%s/:id", strings.ToLower(paste.ServiceName)), paste.pasteServiceHandler)
 }
 
 func (paste PasteService) pasteServiceHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
