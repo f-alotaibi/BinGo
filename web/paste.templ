@@ -7,12 +7,16 @@ templ PasteComponent(serviceName string, id string, content string) {
     @Base() {
         <div class="flex justify-end">
             <div>
-                <a href={ templ.URL(fmt.Sprintf("/%s/%s?raw=1", strings.ToLower(serviceName), id)) }>Raw</a>
-                <a class="ml-2" href={ templ.URL(fmt.Sprintf("/%s/%s?dl=1", strings.ToLower(serviceName), id)) }>Download</a>
+                <a class="text-blue-600" href={ templ.URL(fmt.Sprintf("/%s/%s?raw=1", strings.ToLower(serviceName), id)) }>Raw</a>
+                <a class="text-blue-600 ml-2" href={ templ.URL(fmt.Sprintf("/%s/%s?dl=1", strings.ToLower(serviceName), id)) }>Download</a>
             </div>
         </div>
         <div class="py-4">
-            <pre class="border-2"><code class="whitespace-pre-line">{ content }</code></pre>
+            <ol class="border-2">
+                for _, line := range strings.Split(content, "\n") {
+                    <li class="whitespace-break-spaces list-decimal text-base font-mono">{ line }</li>
+                }
+            </ol>
         </div>
     }
 }
