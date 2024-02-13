@@ -2,11 +2,15 @@ package web
 
 import "fmt"
 import "strings"
+import "bingo/utils"
 
 templ PasteComponent(serviceName string, id string, content string) {
     @Base() {
-        <div class="flex justify-end">
+        <div class="flex justify-between">
             <div>
+                <p class="font-mono">{ utils.FormatStringSize(float64(len(content))) }</p>
+            </div>
+            <div class="flex justify-end">
                 <a class="text-blue-600" href={ templ.URL(fmt.Sprintf("/%s/%s?raw=1", strings.ToLower(serviceName), id)) }>Raw</a>
                 <a class="text-blue-600 ml-2" href={ templ.URL(fmt.Sprintf("/%s/%s?dl=1", strings.ToLower(serviceName), id)) }>Download</a>
             </div>
