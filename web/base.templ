@@ -7,10 +7,15 @@ templ Base() {
 			<meta charset="utf-8"/>
     	    <title>BinGo</title>
         	<script src="https://cdn.tailwindcss.com"></script>
+			<link href="https://unpkg.com/highlightjs@9.16.2/styles/a11y-dark.css" media="(prefers-color-scheme: dark)" rel="stylesheet"></link>
+			<link href="https://unpkg.com/highlightjs@9.16.2/styles/a11y-light.css" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)" rel="stylesheet"></link>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+			<script src="https://cdn.jsdelivr.net/gh/taufik-nurrohman/highlight.ln.js@master/highlight.ln.min.js"></script>
+			<script>hljs.highlightAll();</script>
 	    </head>
-    	<body>
-			<main>
-			    <div class="m-auto p-10 lg:w-2/3 md:w-full">
+    	<body class="bg-[#f7f7f7] dark:bg-[#333333]">
+			<main class="m-auto border-2 border-[#5454541a] dark:border-[#f8f8f21a] min-h-screen lg:w-2/3 md:w-full bg-white dark:bg-[#262626] dark:text-white">
+			    <div class="p-10">
             		<div class="grid justify-center text-center">
                 		<h1 class="text-xl">BinGo</h1>
                 		<p class="text-l">One frontend to rule them all!</p>

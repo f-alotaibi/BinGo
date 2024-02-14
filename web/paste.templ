@@ -16,11 +16,7 @@ templ PasteComponent(serviceName string, id string, content string) {
             </div>
         </div>
         <div class="py-4">
-            <ol class="border-2">
-                for _, line := range strings.Split(content, "\n") {
-                    <li class="whitespace-break-spaces list-decimal text-base font-mono">{ line }</li>
-                }
-            </ol>
+            <div class="border-2 border-[#5454541a] dark:border-[#f8f8f21a]"><pre><code>{ content }</code></pre></div>
         </div>
     }
 }
