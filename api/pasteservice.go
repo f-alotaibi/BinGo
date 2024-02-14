@@ -25,8 +25,7 @@ func (paste PasteService) pasteServiceHandler(w http.ResponseWriter, r *http.Req
 	id := ps.ByName("id")
 	content, err := utils.GetRawPasteContent(fmt.Sprintf(paste.Endpoint, id))
 	if err != nil {
-		http.Error(w, "Paste Not Found", http.StatusNotFound)
-		println(fmt.Sprintf("%s: Paste not found %s", paste.ServiceName, id))
+		web.GiveErrorPage(w, r, http.StatusNotFound, "Not found")
 		return
 	}
 	queries := r.URL.Query()
@@ -37,7 +36,7 @@ func (paste PasteService) pasteServiceHandler(w http.ResponseWriter, r *http.Req
 		w.Header().Set("Content-type", "text/plain")
 		_, err := w.Write([]byte(content))
 		if err != nil {
-			http.Error(w, "Could not write data", http.StatusInternalServerError)
+			web.GiveErrorPage(w, r, http.StatusInternalServerError, "Could not write data")
 			return
 		}
 		return
@@ -50,7 +49,7 @@ func (paste PasteService) pasteServiceHandler(w http.ResponseWriter, r *http.Req
 		w.Header().Set("Last-Modified", time.Now().UTC().Format(http.TimeFormat))
 		_, err := w.Write([]byte(content))
 		if err != nil {
-			http.Error(w, "Could not write data", http.StatusInternalServerError)
+			web.GiveErrorPage(w, r, http.StatusInternalServerError, "Could not write data")
 			return
 		}
 		return
@@ -60,7 +59,7 @@ func (paste PasteService) pasteServiceHandler(w http.ResponseWriter, r *http.Req
 	component := web.PasteComponent(paste.ServiceName, id, content)
 	err = component.Render(r.Context(), w)
 	if err != nil {
-		http.Error(w, "Could not render component", http.StatusInternalServerError)
+		http.Error(w, "Could not render paste component", http.StatusInternalServerError)
 		return
 	}
 }

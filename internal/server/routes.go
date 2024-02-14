@@ -17,5 +17,8 @@ func (s *Server) RegisterRoutes() http.Handler {
 	api.GithubGists.Init(r)
 	api.GitlabSnippets.Init(r)
 	api.RentryCo.Init(r)
+	r.NotFound = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		web.GiveErrorPage(w, r, http.StatusNotFound, "Not found")
+	})
 	return r
 }

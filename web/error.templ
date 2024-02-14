@@ -1,0 +1,12 @@
+package web
+
+import "strconv"
+
+templ ErrorComponent(code int, errorString string) {
+    @Base() {
+        <div class="m-4 text-center">
+            <p class="text-7xl">{ strconv.Itoa(code) }</p>
+            <p class="text-xl">{ errorString }</p>
+        </div>
+    }
+}
